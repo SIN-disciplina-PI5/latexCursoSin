@@ -182,6 +182,18 @@ Em resumo, os principais problemas identificados no contexto do curso de Sistema
   \item Implementar elementos interativos no site para promover maior engajamento dos alunos. 
 \end{itemize} 
 
+\subsection{Back-End} 
+Nosso Back-end é feito em .NET Core 8.0, Entity Framework Core e Padrão de Arquitetura limpa CQRS (Segregação de Responsabilidade de Comando e Consulta).
+  
+Através da utilização de rotas expressas, as solicitações HTTP que correspondem a determinadas rotas passam por uma camada de verificação chamada Middleware de CORS antes de alcançarem a camada de segurança. 
+A camada de segurança é composta por: 
+\begin{itemize} 
+  \item Middleware de autenticação JWT: responsável por verificar a validade da inscrição e autenticidade do token. 
+  \item Middleware de autorização: verifica as permissões do usuário por meio de informações registradas no banco de dados. 
+\end{itemize} 
+Caso algum erro seja detectado por esses middlewares, uma mensagem adequada é enviada como resposta HTTP. 
+Os controladores, por sua vez, estabelecem a interação com o banco de dados SQLServer utilizando o Entity Framework Core e enviam respostas HTTP ao cliente, como tokens de autenticação, informações do usuário e dados específicos com base em funções de acesso. 
+
 \chapter{Resultados}
 
 \chapter{Trabalhos Relacionados}
