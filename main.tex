@@ -1,0 +1,216 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[brazil]{babel}
+\usepackage{hyperref}
+\usepackage{newtxtext} 
+\usepackage{newtxmath} 
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+
+% Configurações da capa
+\title{Relatório sobre a Página do Curso}
+\author{
+    Alex Lucas, Arthur Eulálio, Gabriel Albuquerque, José Gabriel \and
+    Nicolly Mendonça, Paulo Barreto, Sâmya Maria e Tatiana Helena.
+}
+\date{\today}
+
+\begin{document}
+
+% Capa
+\maketitle
+
+% Resumo
+\begin{abstract}
+Este relatório apresenta uma análise detalhada da página do curso, incluindo sua estrutura, conteúdo e funcionalidade. O objetivo é fornecer uma visão geral das principais características e avaliar seu impacto na experiência do usuário.
+\end{abstract}
+
+% Sumário
+\tableofcontents
+\newpage
+
+% Introdução
+\chapter{Introdução}
+O presente trabalho propõe o desenvolvimento de um site para o curso de Tecnologia, visando aprimorar a disseminação de informações e facilitar o acesso a recursos importantes para os alunos e professores. A falta de uma plataforma centralizada tem dificultado a comunicação eficiente, tornando-se necessária a criação de um sistema que agregue todas as informações relevantes de maneira organizada e acessível.
+
+\section{Contextualização e Motivação}
+Atualmente, as informações relacionadas ao curso de Tecnologia estão dispersas em diferentes canais, dificultando o acesso e a comunicação eficiente entre os membros da comunidade acadêmica. Essa dispersão de informações pode levar à desinformação e à perda de oportunidades importantes para os alunos. A motivação para este projeto surge da necessidade de criar uma plataforma única e acessível, onde todas as informações pertinentes ao curso possam ser facilmente encontradas.
+
+\section{Problemática}
+A principal problemática enfrentada pela comunidade acadêmica do curso de Tecnologia é a dificuldade de acesso a informações centralizadas e atualizadas. A falta de um ponto de referência único resulta em comunicação ineficaz, perda de informações importantes e dificuldade de acompanhamento das atividades do curso. Esse problema afeta diretamente a qualidade da experiência acadêmica dos alunos e a eficiência na administração do curso.
+
+\section{Objetivos}
+O desenvolvimento do site tem como objetivo geral centralizar as informações e melhorar a comunicação entre os membros da comunidade acadêmica. Para alcançar esse objetivo, foram definidos os seguintes objetivos específicos:
+
+\subsection{Objetivo Geral}
+Desenvolver um site informativo para o curso de Tecnologia, que centralize todas as informações importantes, projetos de extensão e avisos relevantes. 
+
+\subsubsection{Objetivos Específicos}
+\begin{itemize}
+    \item Criar uma plataforma de fácil navegação e acesso intuitivo.
+    \item Disponibilizar informações detalhadas sobre o curso, como grade curricular, corpo docente e projetos de extensão.
+    \item Implementar uma seção de avisos e notícias atualizada regularmente.
+    \item Incluir funcionalidades que facilitem a comunicação entre alunos e professores.
+\end{itemize}
+
+% Funcionalidades da Página do Curso
+\chapter{Metodologia}
+\section{Arquitetura de Software} 
+A arquitetura utilizada em Front-end e Back-end são distintas, com comunicação via API. O padrão adotado é o MVC (Model-View-Controller). O front-end (View) interage com o back-end (Controller) que manipula os dados (Model). 
+
+\section{Detalhes Técnicos}
+\subsection{Front-End} 
+O Front-end é implementado em React. 
+Sobre os componentes do sistema: 
+\begin{itemize} 
+    \item \textbf{Página Inicial:} Um componente que exibe artigos e a home do site. 
+    \item \textbf{Login:} Um componente para realizar login com campos de entrada para Email e senha. 
+    \item \textbf{Corpo Docente:} Componentes que mostram os docentes e informações sobre o curso. 
+\end{itemize}
+
+\subsection{Roteamento} 
+As rotas no Front-end são manipuladas pelo react-router-dom, uma biblioteca para roteamento no React. 
+
+\subsection{Tratamento de Erros} 
+Se o login falhar, a resposta da API é tratada, e a mensagem de erro retornada pelo servidor é exibida ao usuário. Se houver um erro de conexão ao servidor, a mensagem "Erro ao conectar ao servidor" é exibida. 
+
+\subsection{Notas e Observações} 
+\begin{itemize} 
+    \item O código é bem estruturado e segue boas práticas de React, como uso de Hooks (useState, useNavigate) e tratamento de erros. 
+\end{itemize} 
+
+\subsection{Back-End} 
+Nosso Back-end é feito em .NET Core 8.0, Entity Framework Core e Padrão de Arquitetura limpa CQRS (Segregação de Responsabilidade de Comando e Consulta).
+  
+Através da utilização de rotas expressas, as solicitações HTTP que correspondem a determinadas rotas passam por uma camada de verificação chamada Middleware de CORS antes de alcançarem a camada de segurança. 
+A camada de segurança é composta por: 
+\begin{itemize} 
+  \item Middleware de autenticação JWT: responsável por verificar a validade da inscrição e autenticidade do token. 
+  \item Middleware de autorização: verifica as permissões do usuário por meio de informações registradas no banco de dados. 
+\end{itemize} 
+Caso algum erro seja detectado por esses middlewares, uma mensagem adequada é enviada como resposta HTTP. 
+Os controladores, por sua vez, estabelecem a interação com o banco de dados SQLServer utilizando o Entity Framework Core e enviam respostas HTTP ao cliente, como tokens de autenticação, informações do usuário e dados específicos com base em funções de acesso. 
+
+\section{Funcionalidades e Casos de Uso}
+ \subsection{Descrição Geral}
+    \label{sec:descricao}
+O projeto do site do curso de graduação em Sistemas para Internet foi motivado pela necessidade de centralizar e organizar informações importantes, divulgar avisos, fornecer informações sobre o curso e o corpo docente, e facilitar a divulgação de artigos pelos professores. A plataforma visa melhorar a comunicação e o acesso a informações para alunos e professores, além de promover a visibilidade do curso.
+Nossa plataforma online contará com cinco seções principais, que terão suas funcionalidades descritas a seguir.
+ 
+\begin{itemize} 
+    \item Sobre o Curso: Esta seção fornecerá uma visão geral do curso de Sistemas para Internet, será um recurso importante para futuros alunos e aqueles que desejam mais informações sobre o curso.
+ 
+    \item Corpo Docente: Aqui serão apresentadas informações sobre os professores do curso, incluindo suas qualificações, áreas de especialização, e artigos. Esta seção permitirá aos alunos conhecerem melhor seus professores e suas áreas de atuação.
+ 
+    \item Avisos e Comunicados: Esta seção será utilizada para divulgar avisos importantes, como mudanças no cronograma, eventos do curso, prazos de inscrição, e outras informações relevantes. Será uma ferramenta essencial para manter os alunos atualizados sobre as atividades do curso.
+ 
+    \item Divulgação de Artigos: Exclusiva para professores, esta seção permitirá a divulgação de artigos científicos e publicações realizadas pelo corpo docente. Professores poderão compartilhar suas pesquisas e contribuições acadêmicas, promovendo a troca de conhecimento e estimulando o interesse dos alunos pela pesquisa científica.
+ 
+    \item Conta e Login: Os usuários poderão criar uma conta no site para ter acesso personalizado. Alunos e professores terão áreas dedicadas, onde poderão acessar funcionalidades específicas. Algumas funcionalidades, como a publicação de artigos, serão restritas aos professores, garantindo a integridade e qualidade das informações divulgadas.
+\end{itemize}
+
+\subsection{Possíveis Casos de Uso}
+ 
+\subsubsection{Caso de Uso 1}
+ 
+Objetivo do usuário: Realizar Cadastro e acessar área Aluno do site.
+ 
+Como apresentado na Figura, após acessar o site, o usuário poderá optar por realizar o cadastro. Após o preenchimento dos dados necessários e a confirmação do cadastro, o usuário poderá fazer login na página inicial. Uma vez autenticado, o usuário terá acesso à área Aluno do site, onde poderá visualizar informações exclusivas, como artigos publicados pelos professores, materiais de estudo e avisos importantes.
+ 
+\subsubsection{Caso de Uso 2}
+ 
+Objetivo do usuário: Acessar e visualizar informações sobre extensões do curso.
+ 
+Como apresentado na Figura, ao navegar pelo site, o usuário poderá acessar a seção de "Extensões do Curso". Nessa seção, estarão listadas todas as atividades de extensão oferecidas pelo curso, como workshops, palestras, eventos e projetos de pesquisa em andamento. Facilitando assim sua participação em eventos e iniciativas extracurriculares relacionadas ao curso.
+ 
+\subsubsection{Caso de Uso 3}
+ 
+Objetivo do usuário: Visualizar perfil do corpo docente e entrar em contato.
+ 
+Como apresentado na Figura, ao acessar a seção "Corpo Docente" do site, o usuário poderá visualizar informações sobre os professores do curso, como nome, disciplinas lecionadas, áreas de pesquisa, e-mail de contato, entre outros.
+
+\section{Diagrama de Classes}
+ 
+\subsection{Descrição do Diagrama}
+ 
+O site do curso de Sistema para Internet visa fornecer uma plataforma interativa e informativa para alunos, professores e interessados no curso. O diagrama de classes apresentado abaixo ilustra a estrutura dos principais componentes do sistema e suas interações.
+ 
+\subsection{Curso de Sistema para Internet}
+ 
+O curso de Sistema para Internet é o elemento central do sistema, representado por uma classe que armazena informações essenciais, como nome do curso, descrição, coordenador, corpo docente, e outros detalhes relevantes.
+ 
+\subsection{Usuários}
+ 
+Os usuários do sistema podem ser divididos em duas categorias principais: alunos e professores. Cada usuário possui informações específicas, como nome, email e senha. A classe de usuário também inclui métodos para autenticação e controle de acesso ao sistema.
+ 
+\subsection{Avisos e Informações}
+ 
+Esta classe representa os avisos e informações que são divulgados no site. Pode incluir anúncios importantes, notificações de eventos, prazos de inscrição, entre outros. Cada aviso possui um título, conteúdo, data de publicação e autor.
+ 
+\subsection{Extensões do Curso}
+ 
+As extensões do curso referem-se a atividades extracurriculares oferecidas aos alunos, como workshops, palestras, eventos e projetos de pesquisa. Cada extensão possui informações detalhadas, como título, descrição, datas, horários, localização e responsáveis pela organização.
+ 
+\subsection{Artigos}
+ 
+Os artigos são materiais acadêmicos ou informativos escritos pelos professores do curso. Cada artigo pode conter um título, resumo, conteúdo completo, data de publicação e autor. Os alunos podem acessar e visualizar esses artigos para obter conhecimento adicional sobre tópicos relevantes.
+ 
+\subsection{Relacionamentos}
+ 
+O diagrama de classes também inclui relacionamentos entre as diferentes entidades do sistema. Por exemplo, um usuário pode estar associado a vários avisos e extensões do curso, enquanto uma extensão do curso pode ter vários alunos inscritos.
+ 
+\subsection{Objetivos do Diagrama}
+ 
+O diagrama de classes tem como objetivo fornecer uma visão geral da estrutura do sistema e das relações entre seus componentes. Ele serve como um guia para o desenvolvimento e implementação do site do curso de Sistema para Internet, garantindo uma organização eficiente e uma experiência de usuário satisfatória.
+
+\subsection{Problemas Identificados no Contexto do Curso}
+ 
+Em resumo, os principais problemas identificados no contexto do curso de Sistema para Internet consistem em:
+\begin{itemize}
+    \item Falta de acesso à informação adequada sobre o curso, suas disciplinas, atividades extracurriculares e eventos relacionados.
+    \item Ausência de uma solução efetiva e durável para estimular a participação dos alunos em atividades acadêmicas e extracurriculares, bem como para promover a interação entre alunos e professores.
+\end{itemize}
+ 
+\section{Relações entre as Classes} 
+  
+\subsection{Notas e Observações} 
+  
+\begin{itemize} 
+  \item Conscientizar os alunos sobre a importância do curso de Sistema para Internet e os benefícios de uma formação nessa área. 
+  \item Disponibilizar informações atualizadas sobre o curso, como grade curricular, disciplinas oferecidas, corpo docente, entre outros, para que os interessados possam tomar decisões informadas. 
+  \item Implementar elementos interativos no site para promover maior engajamento dos alunos. 
+\end{itemize} 
+
+\chapter{Resultados}
+
+\chapter{Trabalhos Relacionados}
+Diversas iniciativas similares foram identificadas no campo de estudo deste trabalho, as quais serão apresentadas a seguir. Estas poderão ser utilizadas como referências importantes para aprimoramento e desenvolvimento da nossa aplicação.\
+
+\begin{enumerate}
+\item A plataforma \emph{Graduação Digital}, disponível para web e dispositivos móveis, funciona desde 2019. Criada pela Universidade Federal de São Paulo, o site tem o objetivo de centralizar todas as informações relevantes sobre os cursos de graduação oferecidos. A plataforma fornece detalhes sobre os programas de estudo, cronograma de aulas, requisitos de graduação e suporte acadêmico. Uma funcionalidade importante é a integração com o sistema de matrícula, permitindo aos alunos gerenciar suas inscrições de maneira eficiente.
+
+\item Em 2020, foi lançado o portal \emph{Docentes Conectados}, desenvolvido por Silva. A aplicação oferece uma solução inovadora para a comunicação e colaboração entre os membros do corpo docente. Além de perfis detalhados dos professores, com suas áreas de pesquisa e publicações, o portal inclui ferramentas para agendamento de reuniões, compartilhamento de recursos educativos e organização de grupos de estudo e pesquisa. Infelizmente, devido a cortes de financiamento, a plataforma enfrenta dificuldades de manutenção e atualizações regulares.
+
+\item No ano de 2021, a Universidade Estadual do Ceará (UECE) lançou o projeto \emph{Extensão em Ação}, que visa promover os projetos de extensão desenvolvidos por estudantes e professores. O site permite a divulgação de projetos em andamento, resultados obtidos e oportunidades de participação para a comunidade acadêmica e externa. A plataforma também facilita a busca por parcerias e financiamento para novos projetos.
+
+\item Em 2022, o então reitor da Universidade de Brasília (UnB), Dr. Joaquim Lima, apresentou à comunidade acadêmica a plataforma \emph{Artigos Acadêmicos UnB}. A ideia era criar um repositório digital que concentrasse todos os artigos publicados pelos professores da instituição, oferecendo uma interface amigável para busca e acesso a esses trabalhos. A plataforma inclui filtros por área de pesquisa, ano de publicação e autor, além de permitir o download dos artigos em formato PDF. O projeto atualmente continua em fase de expansão, incorporando novas funcionalidades.
+
+\end{enumerate}
+Nossa proposta de aplicação, por sua vez, se concentrará em integrar todas as informações mencionadas nas plataformas acima, além de desenvolver uma solução tecnológica \textit{gameficada}, a fim de tornar a experiência do gerenciamento acadêmico mais interativa e envolvente.
+
+% Experiência do Usuário
+\chapter{Experiência do Usuário}
+A experiência do usuário é avaliada com base em critérios como facilidade de navegação, clareza das informações e usabilidade das funcionalidades.
+
+% Conclusão
+\chapter{Conclusão}
+A página do curso desempenha um papel fundamental no suporte ao aprendizado dos alunos, oferecendo uma plataforma centralizada para acesso a informações e recursos. Melhorias contínuas na estrutura e funcionalidades da página podem aumentar ainda mais sua eficácia e a satisfação dos usuários.
+
+\maketitle
+
+\begin{abstract}
+O site de curso de graduação desenvolvido visa facilitar o acesso e a gestão de informações pertinentes aos cursos oferecidos pela instituição. Com uma interface intuitiva e recursos robustos, a aplicação atende tanto às necessidades dos alunos quanto dos administradores.
+\end{abstract}
+
+\end{document}
