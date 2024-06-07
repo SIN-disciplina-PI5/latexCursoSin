@@ -22,7 +22,7 @@ Além disso, o relatório avalia o impacto da plataforma na experiência do usu�
 ## Arquitetura do Sistema
 
 ### Front-end
-- Desenvolvido com [React, Vite]
+- Desenvolvido com [React e Vite]
 
 ### Back-end
 - Desenvolvido com [.NET 8 e Entity Framework Core]
